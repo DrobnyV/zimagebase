@@ -1,0 +1,855 @@
+{
+  "input": {
+    "workflow": {
+      "9": {
+        "inputs": {
+          "filename_prefix": "ZIT_Base/%date:yyyy-MM-dd%/%date:hhmmss%",
+          "images": [
+            "198",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "39": {
+        "inputs": {
+          "filename": "qwen_3_4b.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "40": {
+        "inputs": {
+          "filename": "ae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "41": {
+        "inputs": {
+          "width": [
+            "220",
+            0
+          ],
+          "height": [
+            "220",
+            1
+          ],
+          "batch_size": 1
+        },
+        "class_type": "EmptySD3LatentImage",
+        "_meta": {
+          "title": "EmptySD3LatentImage"
+        }
+      },
+      "43": {
+        "inputs": {
+          "samples": [
+            "216",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "45": {
+        "inputs": {
+          "text": "",
+          "clip": [
+            "219",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "46": {
+        "inputs": {
+          "filename": "z_image_bf16.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "47": {
+        "inputs": {
+          "value": 3,
+          "model": [
+            "219",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+          "title": "ModelSamplingAuraFlow"
+        }
+      },
+      "66": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "108",
+            0
+          ],
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "67",
+            0
+          ],
+          "sam_model_opt": [
+            "69",
+            0
+          ],
+          "segm_detector_opt": [
+            "67",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "EyeDetailer"
+        }
+      },
+      "67": {
+        "inputs": {
+          "filename": "bbox/Eyes.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "69": {
+        "inputs": {
+          "filename": "sam_vit_b_01ec64.pth"
+        },
+        "class_type": "SAMLoader",
+        "_meta": {
+          "title": "SAMLoader"
+        }
+      },
+      "72": {
+        "inputs": {
+          "filename": "z_image-Q8_0.gguf"
+        },
+        "class_type": "LoaderGGUF",
+        "_meta": {
+          "title": "LoaderGGUF"
+        }
+      },
+      "73": {
+        "inputs": {
+          "any_01": [
+            "46",
+            0
+          ],
+          "any_02": [
+            "72",
+            0
+          ]
+        },
+        "class_type": "Any Switch (rgthree)",
+        "_meta": {
+          "title": "Any Switch (rgthree)"
+        }
+      },
+      "74": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "186",
+            0
+          ]
+        },
+        "class_type": "ImageScaleBy",
+        "_meta": {
+          "title": "ImageScaleBy"
+        }
+      },
+      "75": {
+        "inputs": {
+          "value": 2167895441,
+          "image": [
+            "202",
+            0
+          ],
+          "dit": [
+            "77",
+            0
+          ],
+          "vae": [
+            "76",
+            0
+          ],
+          "resolution": [
+            "191",
+            0
+          ]
+        },
+        "class_type": "SeedVR2VideoUpscaler",
+        "_meta": {
+          "title": "SeedVR2VideoUpscaler"
+        }
+      },
+      "76": {
+        "inputs": {
+          "filename": "ema_vae_fp16.safetensors"
+        },
+        "class_type": "SeedVR2LoadVAEModel",
+        "_meta": {
+          "title": "SeedVR2LoadVAEModel"
+        }
+      },
+      "77": {
+        "inputs": {
+          "filename": "seedvr2_ema_7b_fp16.safetensors"
+        },
+        "class_type": "SeedVR2LoadDiTModel",
+        "_meta": {
+          "title": "SeedVR2LoadDiTModel"
+        }
+      },
+      "107": {
+        "inputs": {
+          "filename": "bbox/face_yolov8m.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "108": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "43",
+            0
+          ],
+          "model": [
+            "47",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "107",
+            0
+          ],
+          "sam_model_opt": [
+            "69",
+            0
+          ],
+          "segm_detector_opt": [
+            "107",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "FaceDetailer"
+        }
+      },
+      "174": {
+        "inputs": {
+          "value": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_zjmfx_00003_.png&type=temp&subfolder=&rand=0.2157371948588801"
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_zjmfx_00004_.png&type=temp&subfolder=&rand=0.951808716721588"
+            }
+          ],
+          "image_a": [
+            "43",
+            0
+          ],
+          "image_b": [
+            "198",
+            0
+          ]
+        },
+        "class_type": "Image Comparer (rgthree)",
+        "_meta": {
+          "title": "Image Comparer"
+        }
+      },
+      "175": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "66",
+            0
+          ],
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "176",
+            0
+          ],
+          "sam_model_opt": [
+            "69",
+            0
+          ],
+          "segm_detector_opt": [
+            "176",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "Lips Detailer"
+        }
+      },
+      "176": {
+        "inputs": {
+          "filename": "bbox/lips_v1.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "179": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "175",
+            0
+          ],
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "180",
+            0
+          ],
+          "sam_model_opt": [
+            "69",
+            0
+          ],
+          "segm_detector_opt": [
+            "180",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "Hands Detailer"
+        }
+      },
+      "180": {
+        "inputs": {
+          "filename": "bbox/hand_yolov8s.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "182": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "179",
+            0
+          ],
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "183",
+            0
+          ],
+          "sam_model_opt": [
+            "69",
+            0
+          ],
+          "segm_detector_opt": [
+            "183",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "Feet Detailer"
+        }
+      },
+      "183": {
+        "inputs": {
+          "filename": "bbox/feet.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "184": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "182",
+            0
+          ],
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "185",
+            0
+          ],
+          "sam_model_opt": [
+            "206",
+            0
+          ],
+          "segm_detector_opt": [
+            "185",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "Breasts Detailer"
+        }
+      },
+      "185": {
+        "inputs": {
+          "filename": "bbox/nipples.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "186": {
+        "inputs": {
+          "value": 1920,
+          "image": [
+            "184",
+            0
+          ],
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ],
+          "vae": [
+            "40",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "bbox_detector": [
+            "187",
+            0
+          ],
+          "sam_model_opt": [
+            "206",
+            0
+          ],
+          "segm_detector_opt": [
+            "187",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "Pussy Detailer"
+        }
+      },
+      "187": {
+        "inputs": {
+          "filename": "bbox/pussy.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "191": {
+        "inputs": {
+          "value": 1,
+          "int_a": [
+            "196",
+            0
+          ],
+          "float_b": [
+            "195",
+            0
+          ]
+        },
+        "class_type": "Multiply Int Float (JPS)",
+        "_meta": {
+          "title": "Multiply Int Float (JPS)"
+        }
+      },
+      "192": {
+        "inputs": {
+          "filename": "Divide and Conquer Algorithm:\nOriginal Image Size: 416x608\nUpscaled Image Size: 1440x2104\nGrid: 1x2 (2 tiles)\nOverlap_x: 180 pixels\nOverlap_y: 776 pixels\nEffective_upscale: 3.46\n",
+          "ui": [
+            "197",
+            2
+          ]
+        },
+        "class_type": "Display UI",
+        "_meta": {
+          "title": "Divide and Conquer Algorithm UI"
+        }
+      },
+      "193": {
+        "inputs": {
+          "text": "Divide and Conquer Matrix:\n1 (0,0)\n2 (0,221)\n",
+          "ui": [
+            "202",
+            1
+          ]
+        },
+        "class_type": "Display UI",
+        "_meta": {
+          "title": "Divide Image and Select Tile UI"
+        }
+      },
+      "194": {
+        "inputs": {
+          "images": [
+            "202",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "ALL TILES PREVIEW"
+        }
+      },
+      "195": {
+        "inputs": {
+          "value": 3
+        },
+        "class_type": "Float",
+        "_meta": {
+          "title": "UPSCALE BY"
+        }
+      },
+      "196": {
+        "inputs": {
+          "text": "480"
+        },
+        "class_type": "Int",
+        "_meta": {
+          "title": "TILE SIZE (320 default)"
+        }
+      },
+      "197": {
+        "inputs": {
+          "value": 640,
+          "image": [
+            "74",
+            0
+          ],
+          "tile_width": [
+            "191",
+            0
+          ],
+          "tile_height": [
+            "191",
+            0
+          ],
+          "min_scale_factor": [
+            "195",
+            0
+          ]
+        },
+        "class_type": "Divide and Conquer Algorithm",
+        "_meta": {
+          "title": "Divide and Conquer Algorithm"
+        }
+      },
+      "198": {
+        "inputs": {
+          "images": [
+            "75",
+            0
+          ],
+          "dac_data": [
+            "197",
+            1
+          ]
+        },
+        "class_type": "Combine Tiles",
+        "_meta": {
+          "title": "Combine Tiles"
+        }
+      },
+      "199": {
+        "inputs": {
+          "text": "Divide and Conquer Matrix:\n1 (0,0)\n2 (0,664)\n",
+          "ui": [
+            "198",
+            1
+          ]
+        },
+        "class_type": "Display UI",
+        "_meta": {
+          "title": "Combine Tiles UI"
+        }
+      },
+      "202": {
+        "inputs": {
+          "value": 0,
+          "image": [
+            "205",
+            0
+          ],
+          "dac_data": [
+            "205",
+            1
+          ]
+        },
+        "class_type": "Divide Image and Select Tile",
+        "_meta": {
+          "title": "Divide Image and Select Tile"
+        }
+      },
+      "205": {
+        "inputs": {
+          "value": 320,
+          "image": [
+            "74",
+            0
+          ],
+          "tile_width": [
+            "196",
+            0
+          ],
+          "tile_height": [
+            "196",
+            0
+          ]
+        },
+        "class_type": "Divide and Conquer Algorithm",
+        "_meta": {
+          "title": "Divide and Conquer Algorithm"
+        }
+      },
+      "206": {
+        "inputs": {
+          "filename": "sam_vit_b_01ec64.pth"
+        },
+        "class_type": "SAMLoader",
+        "_meta": {
+          "title": "SAMLoader"
+        }
+      },
+      "209": {
+        "inputs": {},
+        "class_type": "Fast Groups Bypasser (rgthree)",
+        "_meta": {
+          "title": "Fast Groups Bypasser (rgthree)"
+        }
+      },
+      "213": {
+        "inputs": {
+          "text": ""
+        },
+        "class_type": "FancyTimerNode",
+        "_meta": {
+          "title": "Execution Timer"
+        }
+      },
+      "214": {
+        "inputs": {
+          "text": "blurry, low quality, distorted hands, extra fingers, missing toes, bad anatomy, plastic skin, watermark, text, messy background, low-res, (3d render:1.2), cartoonish",
+          "clip": [
+            "219",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "216": {
+        "inputs": {
+          "value": 0.5000000000000001,
+          "model": [
+            "47",
+            0
+          ],
+          "positive": [
+            "45",
+            0
+          ],
+          "negative": [
+            "214",
+            0
+          ],
+          "latent_image": [
+            "41",
+            0
+          ]
+        },
+        "class_type": "ClownsharKSampler_Beta",
+        "_meta": {
+          "title": "ClownsharKSampler_Beta"
+        }
+      },
+      "219": {
+        "inputs": {
+          "value": {},
+          "model": [
+            "73",
+            0
+          ],
+          "clip": [
+            "39",
+            0
+          ]
+        },
+        "class_type": "Power Lora Loader (rgthree)",
+        "_meta": {
+          "title": "Power Lora Loader (rgthree)"
+        }
+      },
+      "220": {
+        "inputs": {
+          "filename": "1.0"
+        },
+        "class_type": "FluxResolutionNode",
+        "_meta": {
+          "title": "FluxResolutionNode"
+        }
+      }
+    }
+  }
+}
